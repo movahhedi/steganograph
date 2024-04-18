@@ -1,0 +1,31 @@
+{
+	"version": "0.2",
+	"ignorePaths": [
+		"node_modules/**",
+		"**/vendor/**",
+		"temp/**",
+		"dist/**",
+		"build/**"
+	],
+	"minWordLength": 4,
+	"allowCompoundWords": true,
+	"dictionaryDefinitions": [
+		{
+			"name": "Steganograph",
+			"path": "./.cspell/Steganograph.txt",
+			"addWords": true
+		},
+		{
+			"name": "Common",
+			"path": "./.cspell/Common.txt",
+			"addWords": true
+		}
+	],
+	"dictionaries": [
+		"Steganograph",
+		"Common"
+	],
+	"words": [],
+	"ignoreWords": [],
+	"import": []
+}
