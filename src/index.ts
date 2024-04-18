@@ -9,7 +9,8 @@ import fs from "fs";
 	.toBuffer({ resolveWithObject: true }); */
 
 // Extract alpha channel as raw, unsigned 16-bit pixel data from PNG input
-const { info: imageInfo, data: imageBuffer } = await sharp("src/data/input2.png")
+const { info: imageInfo, data: imageBuffer } = await sharp("src/data/input.png")
+	.png()
 	.ensureAlpha(1)
 	// .extractChannel(2)
 	.toColourspace("srgb")
@@ -19,7 +20,8 @@ const { info: imageInfo, data: imageBuffer } = await sharp("src/data/input2.png"
 
 console.log(imageBuffer);
 
-const text = "Hello";
+// const text = "Hello 😊";
+const text = "سلام بر شما 😊";
 const textBuffer = Buffer.from(text, "utf8");
 const textBufferLength = textBuffer.length;
 
