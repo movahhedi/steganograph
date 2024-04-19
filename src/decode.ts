@@ -25,7 +25,6 @@ let textLength: number,
 	imageDataLengthBytes = -1;
 
 while (true) {
-	console.log(imageBufferIndex, imageDataLengthBytes);
 	if (imageDataLengthBytes !== -1 && imageBufferIndex > imageDataLengthBytes) {
 		break;
 	}

@@ -9,16 +9,14 @@ import fs from "fs";
 	.toBuffer({ resolveWithObject: true }); */
 
 // Extract alpha channel as raw, unsigned 16-bit pixel data from PNG input
-const { info: imageInfo, data: imageBuffer } = await sharp("src/data/input.png")
+const { info: imageInfo, data: imageBuffer } = await sharp("src/data/i.jpg")
 	.png()
 	.ensureAlpha(1)
+	.rotate()
 	// .extractChannel(2)
 	.toColourspace("srgb")
-	// .raw({ depth: "ushort" })
 	.raw()
 	.toBuffer({ resolveWithObject: true });
-
-console.log(imageBuffer);
 
 // const text = "Hello 😊";
 const text = "سلام بر شما 😊";
@@ -45,8 +43,6 @@ if (dataBufferLength * 8 > writableBytesLength) {
 /* for (let imageBufferIndex = 0; imageBufferIndex < imageBufferLength; imageBufferIndex++) {
 	if (imageBufferIndex % 4 === 0) continue;
 } */
-
-console.log(dataBuffer);
 
 const newImageBuffer = imageBuffer;
 
@@ -75,8 +71,6 @@ while (dataBufferByteIndex < dataBufferLength) {
 	newByte = Buffer.alloc(1);
 	newByte.writeUInt8(newByteInt);
 
-	// console.log(dataBufferByteBits, dataBufferByteBitIndex, bitToWrite);
-
 	// newImageBuffer.write(newByte, imageBufferByteIndex, 1, "binary");
 	newImageBuffer.set(newByte, imageBufferByteIndex);
 
@@ -98,8 +92,6 @@ while (dataBufferByteIndex < dataBufferLength) {
 	}
 }
 
-console.log(newImageBuffer);
-
 await sharp(newImageBuffer, {
 	// because the input does not contain its dimensions or how many channels it has
 	// we need to specify it in the constructor options
@@ -109,6 +101,7 @@ await sharp(newImageBuffer, {
 		channels: 4,
 	},
 })
-	// .flatten()
+	.flatten()
+	.removeAlpha()
 	.png()
 	.toFile("src/data/new.png");
