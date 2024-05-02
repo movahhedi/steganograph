@@ -6,7 +6,7 @@ import { hideBin } from "yargs/helpers";
 
 import { decode, encode } from "./Steganograph";
 
-yargs(hideBin(process.argv))
+const myYargs = yargs(hideBin(process.argv))
 	.version()
 	// .showHelpOnFail(true)
 	.command(
@@ -76,7 +76,9 @@ yargs(hideBin(process.argv))
 
 	.help()
 	.alias("version", "v")
-	.alias("help", "h").argv;
+	.alias("help", "h");
+
+	myYargs.parse();
 
 // const inputImage: Buffer = await fs.promises.readFile("src/data/input.png");
 // const e = await encode(inputImage, "Hi");

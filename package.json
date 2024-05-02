@@ -1,6 +1,6 @@
 {
 	"name": "steganograph",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"author": "Shahab Movahhedi <dev@shmovahhedi.com>",
 	"license": "MIT",
 	"repository": {
@@ -14,8 +14,8 @@
 	"type": "module",
 	"packageManager": "yarn@4.1.1",
 	"bin": {
-		"steganograph": "/.dist/index.cjs",
-		"stg": "/.dist/index.cjs"
+		"steganograph": "./dist/index.cjs",
+		"stg": "./dist/index.cjs"
 	},
 	"source": "./src/index.ts",
 	"exports": {
@@ -35,9 +35,15 @@
 		"dev": "microbundle watch"
 	},
 	"devDependencies": {
+		"@rollup/plugin-commonjs": "^25.0.7",
+		"@rollup/plugin-json": "^6.1.0",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
 		"@types/node": "^20.12.7",
 		"@types/yargs": "^17.0.32",
 		"microbundle": "^0.15.1",
+		"rollup": "^4.17.2",
+		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.7.2",
 		"typescript": "^5.4.5"
