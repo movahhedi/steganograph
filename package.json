@@ -1,15 +1,49 @@
 {
 	"name": "steganograph",
 	"version": "0.1.0",
+	"author": "Shahab Movahhedi <dev@shmovahhedi.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/movahhedi/steganograph"
+	},
+	"bugs": {
+		"url": "https://github.com/movahhedi/steganograph/issues"
+	},
+	"homepage": "https://github.com/movahhedi/steganograph#readme",
 	"type": "module",
 	"packageManager": "yarn@4.1.1",
+	"bin": {
+		"steganograph": "/.dist/index.cjs",
+		"stg": "/.dist/index.cjs"
+	},
+	"source": "./src/index.ts",
+	"exports": {
+		"require": "./dist/index.cjs",
+		"default": "./dist/index.modern.js"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.module.js",
+	"unpkg": "./dist/index.umd.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"src",
+		"dist"
+	],
+	"scripts": {
+		"build": "microbundle",
+		"dev": "microbundle watch"
+	},
 	"devDependencies": {
 		"@types/node": "^20.12.7",
+		"@types/yargs": "^17.0.32",
+		"microbundle": "^0.15.1",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.7.2",
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
-		"sharp": "^0.33.3"
+		"sharp": "^0.33.3",
+		"yargs": "^17.7.2"
 	}
 }
